@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { Component } from "react";
+import Profile from "./Profile";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      fullName: "bolbol rayana",
+      bio: "jgezgjrl jezmgj",
+      imgSrc: "/couv.JPG",
+      profession: "footballer",
+      toggle: false,
+    };
+  }
+  hideShow = () => {
+    this.setState({ toggle: !this.state.toggle });
+  };
+  render() {
+    return (
+      <div>
+        {this.state.toggle ? (
+          <>
+            <Profile
+              fullName={this.state.fullName}
+              imgSrc={this.state.imgSrc}
+              bio={this.state.bio}
+              profession={this.state.profession}
+            />
+          </>
+        ) : (
+          <></>
+        )}
+
+        <button onClick={this.hideShow}>
+          {this.state.toggle ? "Hide" : "Show"}
+        </button>
+      </div>
+    );
+  }
 }
-
 export default App;
